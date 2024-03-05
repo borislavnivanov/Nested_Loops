@@ -1,35 +1,33 @@
-student = 0
-standard = 0
-kid = 0
-flag_break = False
+movie = input()
+total_tickets = 0
+standard_tickets = 0
+student_tickets = 0
+kid_tickets = 0
 
-while True:
-    name = input()
-    seats = int(input())
-    full = 0
+while movie != 'Finish':
+    free_seats = int(input())
+    busy_seats = 0
 
-    while True:
-        inp = input()
+    for i in range(free_seats):
+        ticket = input()
 
-        if inp == 'Finish' or inp == 'End':
-            print(f'{name} - {(full / seats) * 100:.2f}% full.')
-            if inp == 'Finish':
-                flag_break = True
+        if ticket == 'kid':
+            kid_tickets += 1
+        elif ticket == 'student':
+            student_tickets += 1
+        elif ticket == 'standard':
+            standard_tickets += 1
+        elif ticket == 'End':
             break
-        full += 1
-        if inp == 'student':
-            student += 1
-        elif inp == 'standard':
-            standard += 1
-        elif inp == 'kid':
-            kid += 1
+        total_tickets += 1
+        busy_seats += 1
 
-    if flag_break:
-        break
+    total_tickets = standard_tickets + student_tickets + kid_tickets
+    print(f'{movie} - {(busy_seats / free_seats) * 100:.2f}% full.')
 
-total_tickets = student + standard + kid
+    movie = input()
 
-print(f"Total tickets: {total_tickets}")
-print(f"{(student / total_tickets) * 100:.2f}% student tickets.")
-print(f"{(standard / total_tickets) * 100:.2f}% standard tickets.")
-print(f"{(kid / total_tickets) * 100:.2f}% kids tickets.")
+print(f'Total tickets: {total_tickets}')
+print(f'{(student_tickets / total_tickets) * 100:.2f}% student tickets.')
+print(f'{(standard_tickets / total_tickets) * 100:.2f}% standard tickets.')
+print(f'{(kid_tickets / total_tickets) * 100:.2f}% kids tickets.')
