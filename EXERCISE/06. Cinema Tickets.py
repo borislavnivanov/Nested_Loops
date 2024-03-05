@@ -1,29 +1,27 @@
 student = 0
 standard = 0
 kid = 0
+flag_break = False
 
 while True:
     name = input()
     seats = int(input())
-    flag_break = False
     full = 0
 
     while True:
-        var = input()
+        inp = input()
 
-        if var == 'Finish' or var == 'End':
+        if inp == 'Finish' or inp == 'End':
             print(f'{name} - {(full / seats) * 100:.2f}% full.')
-            if var == 'Finish':
+            if inp == 'Finish':
                 flag_break = True
             break
-        elif var == 'student':
-            full += 1
+        full += 1
+        if inp == 'student':
             student += 1
-        elif var == 'standard':
-            full += 1
+        elif inp == 'standard':
             standard += 1
-        elif var == 'kid':
-            full += 1
+        elif inp == 'kid':
             kid += 1
 
     if flag_break:
