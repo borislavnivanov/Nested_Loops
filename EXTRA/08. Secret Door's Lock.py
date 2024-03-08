@@ -1,0 +1,1 @@
+# execute solution 01.Number Pyramid.py
